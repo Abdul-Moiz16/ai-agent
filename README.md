@@ -1,8 +1,6 @@
 # ai-agent
 
-A small CLI-based AI coding agent, built while working through Boot.dev's
-["Build an AI Agent in Python"](https://www.boot.dev/courses/build-ai-agent-python)
-course. It sends your prompt to an LLM (via [OpenRouter](https://openrouter.ai)),
+A small CLI-based AI coding agent,It sends your prompt to an LLM (via [OpenRouter](https://openrouter.ai)),
 and the model can call a set of sandboxed tools to explore and modify a target
 codebase in order to answer questions or complete tasks.
 
