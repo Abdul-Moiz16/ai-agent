@@ -41,10 +41,10 @@ def run_python_file(
         
         command = ["python", target_directory] + (args or [])
         output = ""
-        completed_process = subprocess.run(command, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=working_directory, timeout=30, check=False, encoding=None, errors=None, text=True, env=None, universal_newlines=None)
+        completed_process = subprocess.run(command, stdin=None, input=None, capture_output=True, shell=False, cwd=working_directory, timeout=30, check=False, encoding=None, errors=None, text=True, env=None, universal_newlines=None)
         if completed_process.returncode != 0:
             output += f"Process exited with code {completed_process.returncode}\n"
-        if completed_process.stdout and completed_process.stdout == "":
+        if not completed_process.stdout and not completed_process.stderr:
             output += f"No output produced"
         else:
             output += f"STDOUT: {completed_process.stdout}\nSTDERR: {completed_process.stderr}"

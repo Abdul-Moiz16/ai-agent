@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from prompts import system_prompt
 from functions.call_function import available_functions
+from functions.call_function import call_function
 
 load_dotenv()
 
@@ -54,6 +55,11 @@ def main():
             print(f"Calling function: {tool_call.function.name}({function_args})")
     else:
         print(message.content)
+    result_message = call_function(message.tool_calls[0], verbose=args.verbose)
+    if result_message == None:
+        raise Exception("Result message is None. Please check the function call and arguments.")
+    if args.verbose:
+        print(f"-> {result_message['content']}")
 
 
 if __name__ == "__main__":
